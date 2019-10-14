@@ -84,7 +84,18 @@ func (t *Terminal) GetOffset(f func(offset string)) {
 }
 
 func (t *Terminal) Print(s string) (int, error) {
-	return fmt.Fprintf(t.cfg.Stdout, "%s", s)
+	// return fmt.Fprintf(t.cfg.Stdout, "%s", s)
+	return fmt.Fprint(t.cfg.Stdout, s)
+}
+
+func (t *Terminal) Println(s string) (int, error) {
+	// return fmt.Fprintf(t.cfg.Stdout, "%s", s)
+	return fmt.Fprintln(t.cfg.Stdout, s)
+}
+
+func (t *Terminal) Printf(format string, a ...interface{}) (int, error) {
+	// return fmt.Fprintf(t.cfg.Stdout, "%s", s)
+	return fmt.Fprintf(t.cfg.Stdout, format, a...)
 }
 
 func (t *Terminal) PrintRune(r rune) (int, error) {
