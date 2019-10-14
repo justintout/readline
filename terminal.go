@@ -83,12 +83,12 @@ func (t *Terminal) GetOffset(f func(offset string)) {
 	t.Write([]byte("\033[6n"))
 }
 
-func (t *Terminal) Print(s string) {
-	fmt.Fprintf(t.cfg.Stdout, "%s", s)
+func (t *Terminal) Print(s string) (int, error) {
+	return fmt.Fprintf(t.cfg.Stdout, "%s", s)
 }
 
-func (t *Terminal) PrintRune(r rune) {
-	fmt.Fprintf(t.cfg.Stdout, "%c", r)
+func (t *Terminal) PrintRune(r rune) (int, error) {
+	return fmt.Fprintf(t.cfg.Stdout, "%c", r)
 }
 
 func (t *Terminal) Readline() *Operation {
